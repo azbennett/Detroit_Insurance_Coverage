@@ -29,12 +29,28 @@ function fetchDataAndProcess(zipcodeData) {
     console.log("Geojson import: ");
     console.log(geojsonData);
     
+    function opacitypct(data){ 
+     if (data > .95)
+        return .9
+      else if (data > .90)
+        return .75
+      else if (data > .85)
+        return .6
+      else if (data > .80)
+        return .45
+      else if (data > .75)
+        return .3
+      else if (data > .70)
+        return .15
+        else return .01
+    }
+
     L.geoJson(geojsonData, {
         style: function(feature) {
           return {
             color: "white",
-            fillColor: "orange",
-            fillOpacity: 0.5,
+            fillColor: "blue",
+            fillOpacity: opacitypct(feature.properties.Pct_Insured),
             weight: 1.5
           };
         },
@@ -64,6 +80,7 @@ function fetchDataAndProcess(zipcodeData) {
               Percentage Insured Under 18: ${feature.properties.Pct_Insured_U18}
             `;
             layer.bindPopup(popupContent);
+            
           }
         }
       }).addTo(myMap);
