@@ -23,6 +23,31 @@ d3.csv("https://azbennett.github.io/group_project_3/static/data/usa_zipcode_of_m
   fetchDataAndProcess(zipcodeData);
 });
 
+
+function createLegend() {
+  const legend = L.control({ position: 'bottomright' });
+
+  legend.onAdd = function (map) {
+    const div = L.DomUtil.create('div', 'info legend');
+    const opacityValues = [0.01, 0.9];
+    const labels = [];
+
+    const lowestOpacity = opacityValues[0];
+    const highestOpacity = opacityValues[opacityValues.length];
+
+    const lowestLabel = 'Least Insured';
+    const highestLabel = 'Highest Insured Rate';
+
+    labels.push(`<i style="background-color: blue; opacity: ${highestOpacity + 0.2};"></i> ${highestLabel}`);
+    labels.push(`<i style="background-color: blue; opacity: ${lowestOpacity + 0.2};"></i> ${lowestLabel}`);
+
+    div.innerHTML = labels.join('<br>');
+    return div;
+  };
+
+  legend.addTo(myMap);
+}
+
 function fetchDataAndProcess(zipcodeData) {
   d3.json(url).then(function(geojsonData) {
     
@@ -86,3 +111,5 @@ function fetchDataAndProcess(zipcodeData) {
       }).addTo(myMap);
     });
   }
+
+  createLegend();
