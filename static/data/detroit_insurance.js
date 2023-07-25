@@ -29,17 +29,19 @@ function createLegend() {
 
   legend.onAdd = function (map) {
     const div = L.DomUtil.create('div', 'info legend');
-    const opacityValues = [0.01, 0.9];
+    const opacityValues = [0.9, 0.75, 0.6, 0.45, 0.30, 0.01];
+    const opacityNames = ['95% or greater', '94-90%', '89-85%', '84-80%', '79-75%', '70% or below'];
     const labels = [];
 
-    const lowestOpacity = opacityValues[0];
-    const highestOpacity = opacityValues[opacityValues.length];
-
-    const lowestLabel = 'Least Insured';
-    const highestLabel = 'Highest Insured Rate';
-
-    labels.push(`<i style="background-color: blue; opacity: ${highestOpacity + 0.2};"></i> ${highestLabel}`);
-    labels.push(`<i style="background-color: blue; opacity: ${lowestOpacity + 0.2};"></i> ${lowestLabel}`);
+    for (let i = 0; i < opacityValues.length; i++) {
+      const opacity = opacityValues[i];
+      const opacityName = opacityNames[i];
+      const nextOpacity = opacityValues[i];
+      const label = `${(opacityName)}`;
+      labels.push(
+        `<i style="background-color: blue; opacity: ${opacity + 0.2};"></i> ${label}`
+      );
+    }
 
     div.innerHTML = labels.join('<br>');
     return div;
@@ -47,6 +49,7 @@ function createLegend() {
 
   legend.addTo(myMap);
 }
+
 
 function fetchDataAndProcess(zipcodeData) {
   d3.json(url).then(function(geojsonData) {
