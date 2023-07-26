@@ -1,12 +1,15 @@
-fetch('https://data.ferndalemi.gov/datasets/D3::healthinsurancecoverage-1.geojson?outSR=%7B%22latestWkid%22%3A2898%2C%22wkid%22%3A2898%7D')
-  .then(response => response.json())
+d3.json('/api/data')
   .then(data => {
+    console.log('Fetched data:', data);
+
     let totalWithHealthInsurance = 0;
     let totalNoHealthInsurance = 0;
     let totalunder18WithHealthInsurance = 0;
     let totalunder18NoHealthInsurance = 0;
 
-    data.features.forEach(feature => {
+    d3.entries(data).forEach(entry => {
+      const feature = entry.value;
+
       totalWithHealthInsurance += feature.properties.WithHealthInsurance;
       totalNoHealthInsurance += feature.properties.NoHealthInsurance;
       totalunder18WithHealthInsurance += feature.properties.WithInsurance_U18;
@@ -17,8 +20,10 @@ fetch('https://data.ferndalemi.gov/datasets/D3::healthinsurancecoverage-1.geojso
     zipStackedBar_U18(data);
     createPieChart(totalWithHealthInsurance, totalNoHealthInsurance);
     under18_PieChart(totalunder18WithHealthInsurance, totalunder18NoHealthInsurance);
-  });    
-
+  })
+  .catch(error => {
+    console.error('Error fetching data:', error);
+  });
   function createPieChart(totalWithHealthInsurance, totalNoHealthInsurance) {
     const totalPopulation = totalWithHealthInsurance + totalNoHealthInsurance;
     const pctWithHealthInsurance = (totalWithHealthInsurance / totalPopulation) * 100;
@@ -88,9 +93,9 @@ fetch('https://data.ferndalemi.gov/datasets/D3::healthinsurancecoverage-1.geojso
   }
 
   function zipStackedBar(data) {
-    const labels = data.features.map(feature => feature.properties.GEOID10.slice(-5));
-    const withHealthInsurance = data.features.map(feature => feature.properties.WithHealthInsurance);
-    const noHealthInsurance = data.features.map(feature => feature.properties.NoHealthInsurance);
+    const labels = data.map(feature => feature.properties.GEOID10.slice(-5));
+    const withHealthInsurance = data.map(feature => feature.properties.WithHealthInsurance);
+    const noHealthInsurance = data.map(feature => feature.properties.NoHealthInsurance);
   
     const ctx = document.getElementById('zipbar').getContext('2d');
   
@@ -137,9 +142,9 @@ fetch('https://data.ferndalemi.gov/datasets/D3::healthinsurancecoverage-1.geojso
   };
 
   function zipStackedBar_U18(data) {
-    const labels = data.features.map(feature => feature.properties.GEOID10.slice(-5));
-    const withHealthInsurance = data.features.map(feature => feature.properties.WithInsurance_U18);
-    const noHealthInsurance = data.features.map(feature => feature.properties.NoInsurance_U18);
+    const labels = data.map(feature => feature.properties.GEOID10.slice(-5));
+    const withHealthInsurance = data.map(feature => feature.properties.WithInsurance_U18);
+    const noHealthInsurance = data.map(feature => feature.properties.NoInsurance_U18);
   
     const ctx = document.getElementById('zipbaru18').getContext('2d');
   
