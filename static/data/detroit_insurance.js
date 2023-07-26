@@ -96,16 +96,13 @@ function fetchDataAndProcess(zipcodeData) {
           //console.log("What did the zip find?: ", matchingZip);
   
           if (matchingZip) {
-            let popupContent = `
+            let popupContent = `<b>
               City: ${matchingZip["City"]}<br>
               County: ${matchingZip["County Name"]}<br>
               Total Civilian Population: ${feature.properties.TotalCivilianPop}<br>
               With Health Insurance: ${feature.properties.WithHealthInsurance}<br>
               No Health Insurance: ${feature.properties.NoHealthInsurance}<br>
-              Percentage Insured: ${feature.properties.Pct_Insured}<br>
-              With Insurance Under 18: ${feature.properties.WithInsurance_U18}<br>
-              No Insurance Under 18: ${feature.properties.NoInsurance_U18}<br>
-              Percentage Insured Under 18: ${feature.properties.Pct_Insured_U18}
+              Percentage Insured: ${feature.properties.Pct_Insured}<br></b>
             `;
             layer.bindPopup(popupContent);
             
@@ -116,3 +113,13 @@ function fetchDataAndProcess(zipcodeData) {
   }
 
   createLegend();
+
+  /* City: ${matchingZip["City"]}<br>
+  County: ${matchingZip["County Name"]}<br>
+  Total Civilian Population: ${feature.properties.TotalCivilianPop}<br>
+  With Health Insurance: ${feature.properties.WithHealthInsurance}<br>
+  No Health Insurance: ${feature.properties.NoHealthInsurance}<br>
+  Percentage Insured: ${feature.properties.Pct_Insured}<br>
+  With Insurance Under 18: ${feature.properties.WithInsurance_U18}<br>
+  No Insurance Under 18: ${feature.properties.NoInsurance_U18}<br>
+  Percentage Insured Under 18: ${feature.properties.Pct_Insured_U18} */
