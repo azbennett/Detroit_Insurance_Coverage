@@ -10,10 +10,10 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 }).addTo(myMap);
 
 //location of our geojson
-let url = "static/data/HealthInsuranceCoverage.geojson";
+let url = "https://data.ferndalemi.gov/datasets/D3::healthinsurancecoverage-1.geojson?outSR=%7B%22latestWkid%22%3A2898%2C%22wkid%22%3A2898%7D";
 
 //grab the CSV
-d3.csv("https://azbennett.github.io/group_project_3/static/data/usa_zipcode_of_mi-1539j.csv").then(function(csvData) {
+d3.csv("https://azbennett.github.io/group_project_3/live/static/data/usa_zipcode_of_mi-1539j.csv").then(function(csvData) {
   //store the csv
   let zipcodeData = csvData;
   
