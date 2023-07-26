@@ -38,14 +38,16 @@ fetch('https://data.ferndalemi.gov/datasets/D3::healthinsurancecoverage-1.geojso
       type: 'pie',
       data: data,
       options: {
-        title: {
-          display: true,
-          text: 'Health Insurance Coverage',
-          fontSize: 20
+        plugins: {
+          title: {
+            display: true,
+            text: 'Health Insurance Coverage',
+            font: { size: 20 }
+          }
         },
         legend: {
           display: true,
-          position: 'bottom'
+          position: 'top'
         }
       }
     });
@@ -70,14 +72,16 @@ fetch('https://data.ferndalemi.gov/datasets/D3::healthinsurancecoverage-1.geojso
       type: 'pie',
       data: data,
       options: {
-        title: {
-          display: true,
-          text: 'Health Insurance Coverage',
-          fontSize: 20
+        plugins: {
+          title: {
+            display: true,
+            text: 'Under 18 Health Insurance Coverage',
+            font: { size: 20 }
+          }
         },
         legend: {
           display: true,
-          position: 'bottom'
+          position: 'top'
         }
       }
     });
@@ -108,10 +112,12 @@ fetch('https://data.ferndalemi.gov/datasets/D3::healthinsurancecoverage-1.geojso
         ]
       },
       options: {
-        title: {
-          display: true,
-          text: 'Health Insurance Coverage by Zip Code',
-          fontSize: 20
+        plugins: {
+          title: {
+            display: true,
+            text: 'Health Insurance Coverage by Zip Code',
+            font: { size: 20 }
+          }
         },
         tooltips: {
           mode: 'index',
@@ -155,10 +161,12 @@ fetch('https://data.ferndalemi.gov/datasets/D3::healthinsurancecoverage-1.geojso
         ]
       },
       options: {
-        title: {
-          display: true,
-          text: 'Under 18 Health Insurance Coverage by Zip Code',
-          fontSize: 20
+        plugins: {
+          title: {
+            display: true,
+            text: 'Under 18 Health Insurance Coverage by Zip Code',
+            font: { size: 20 }
+          }
         },
         tooltips: {
           mode: 'index',
