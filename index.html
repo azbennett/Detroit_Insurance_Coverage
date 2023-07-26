@@ -16,6 +16,10 @@
 
     <!-- D3 library -->
     <script src="https://d3js.org/d3.v5.min.js"></script>
+    
+    <!-- Chart.js library -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
 
     <!-- Our CSS -->
     <link rel="stylesheet" type="text/css" href="static/css/style.css">
@@ -24,10 +28,16 @@
   <body>
 
     <!-- map div -->
-    <div id="map"></div>
+    <div style="width: 600px; height:400;"><canvas id="piechart"></canvas></div>
+    <div style="width: 600px; height:400;"><canvas id="U18piechart"></canvas></div>
+    <div style="width: 1000px; height:800;"><canvas id="zipbar"></canvas></div>
+    <div style="width: 1000px; height:800;"><canvas id="zipbaru18"></canvas></div>
+    <div id="map" style="width: 1000px; height:1000;"></div></div>
     <div id="legend"></div>
           <!-- JavaScript file -->
     <script type="text/javascript" src="static/data/detroit_insurance.js"></script>
+    <script type="text/javascript" src="static/data/piechart.js"></script>
+
 
   
     
