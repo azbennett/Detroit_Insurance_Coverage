@@ -1,6 +1,6 @@
 d3.json('/api/data')
   .then(data => {
-    console.log('Fetched data:', data);
+    //console.log('Fetched data:', data);
 
     let totalWithHealthInsurance = 0;
     let totalNoHealthInsurance = 0;
@@ -21,9 +21,7 @@ d3.json('/api/data')
     createPieChart(totalWithHealthInsurance, totalNoHealthInsurance);
     under18_PieChart(totalunder18WithHealthInsurance, totalunder18NoHealthInsurance);
   })
-  .catch(error => {
-    console.error('Error fetching data:', error);
-  });
+
   function createPieChart(totalWithHealthInsurance, totalNoHealthInsurance) {
     const totalPopulation = totalWithHealthInsurance + totalNoHealthInsurance;
     const pctWithHealthInsurance = (totalWithHealthInsurance / totalPopulation) * 100;
