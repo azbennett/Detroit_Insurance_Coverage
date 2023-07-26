@@ -20,7 +20,7 @@ d3.csv("https://azbennett.github.io/group_project_3/static/data/usa_zipcode_of_m
   fetchDataAndProcess(zipcodeData);
 });
 
-
+//inserts our legend with opacity scale + text
 function createLegend() {
   const legend = L.control({ position: 'bottomright' });
 
@@ -47,7 +47,7 @@ function createLegend() {
   legend.addTo(myMap);
 }
 
-
+//grabs our data with d3.json and processes it
 function fetchDataAndProcess(zipcodeData) {
   d3.json('/api/data').then(function(geojsonData) {
     
