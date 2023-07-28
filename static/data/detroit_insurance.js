@@ -30,6 +30,8 @@ function createLegend() {
     const opacityNames = ['95% or greater', '94-90%', '89-85%', '84-80%', '79-75%', '70% or below'];
     const labels = [];
 
+    labels.push('<b> % of insured:</b>' );
+
     for (let i = 0; i < opacityValues.length; i++) {
       const opacity = opacityValues[i];
       const opacityName = opacityNames[i];
