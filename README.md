@@ -20,7 +20,7 @@ To run the project locally, follow these steps:
 2. Command line: `mongoimport --db detroit_insurance --collection health_ins --file "static/data/Health.geojson" --jsonArray`
 3. Run the Flask app using the `mongo.py` script.
 4. Navigate your browser to [http://127.0.0.1:5000](http://127.0.0.1:5000).
-Alternatively, you can explore the live version of the project [here](https://azbennett.github.io/group_project_3/live/).
+Alternatively, you can explore the live version of the project [https://azbennett.github.io/group_project_3/live/](https://azbennett.github.io/group_project_3/live/).
 ## Technical Requirements
 - Data components are documented.
 - The dataset contains 177 unique records.
