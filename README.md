@@ -1,77 +1,32 @@
-# group_project_3
-Group Project #3
-
-Required data clean up:
-Source File: HealthInsuranceCoverage.geojson
-jq --compact-output ".features" HealthInsuranceCoverage.geojson > Health.geojson
-Output File: Health.geojson
-
-This allows it to be imported into MongoDB
-
-Command line:
-mongoimport --db detroit_insurance --collection health_ins --file "static/data/Health.geojson" --jsonArray
-
-Then run the mongo.py to initate the flask local web environment.
-
-
-We need to explain our data source.
-
-We need to explain our story of what we're using the data for.
-
-We need to detail each file used in the readme as well.
-
-
-
-
-
-Technical Requirements for Project 3
-
-Data and Delivery (25 points)
-Data components used in the project are clearly documented. (5 points)  
-NOT YET - PENDING
-
-The dataset contains at least 100 unique records. (5 points)  
-YES - 177 
-
-A database is used to house the data (SQL, MongoDB, SQLite, etc.). (5 points)  
-YES - MongoDB
-
-The project is powered by a Python Flask API and includes HTML/CSS, JavaScript, and the chosen database. (10 points)  
-YES - /api/data/ to confirm the json data  
-/ to run the index.html of our 5 visualizations.
-
-Back End (25 points)  
-The page created to showcase data visualizations runs without error. (7.5 points)  
-YES
-
-A JavaScript library not shown in class is used in the project. (7.5 points)  
-YES - Chart.js 
-
-The project conforms to one of the following designs: (10 points)  
-YES - A dashboard page with multiple charts that all reference the same data
-
-Visualizations (25 points)  
-A minimum of three unique views present the data. (5 points)  
-YES - 5 total - 3 unique
-
-Multiple user-driven interactions (such as dropdowns, filters, or a zoom feature) are included on the final page. (5 points)  
-YES - Clickable, zoom, and mouse hover.
-
-The final page displays visualizations in a clear, digestible manner. (5 points)  
-YES - Easy to read and soft colors as well
-
-The data story is easy to interpret for users of all levels. (10 points)  
-YES - Compares the availability of health insurance per zip code in the city of detroit.  Also includes the bonus view of Adults vs Children
-
-Group Presentation (25 points)  
-All group members speak during the presentation. (5 points)  
-
-
-The content is relevant to the project. (5 points)  
-
-
-The presentation maintains audience interest. (5 points)  
-
-
-Content, transitions, and conclusions flow smoothly within any time restrictions. (10 points)  
-
+# Detroit Health Insurance Coverage
+## Data Source
+- Source File: `HealthInsuranceCoverage.geojson`
+- Clean Data File: `Health.geojson`
+- Website: [Live Version](https://azbennett.github.io/group_project_3/live/)
+The data is available in GeoJSON format, which was cleaned up using the `jq` command-line tool and then imported into MongoDB using `mongoimport` command. The dataset contains 177 unique records and is stored in the `detroit_insurance` database under the collection `health_ins`.
+## Project Overview
+This project utilizes health insurance coverage data for Detroit to create interactive visualizations and a data story. The data visualizations are presented through a Python Flask API, and the front-end includes HTML, CSS, and JavaScript using Chart.js library.
+## Visualizations
+The project includes five visualizations comparing the availability of health insurance per zip code in Detroit. The visualizations are designed to be easy to read and use soft colors for better understanding. User-driven interactions, such as dropdowns, filters, zoom, and mouse hover, allow users to explore the data further.
+## Data Story
+The data story presented in the project focuses on analyzing health insurance coverage in Detroit and highlights the differences in coverage across various zip codes. Additionally, a bonus view compares insurance coverage between adults and children, providing valuable insights into healthcare accessibility in the city.
+## Data Cleaning Process
+The data was processed using the following steps:
+- The GeoJSON file was cleaned up using the `jq` command-line tool to prepare it for MongoDB import.
+- To get the City and County names from a GeoID10, the first 2 characters were dropped to result in a zip code. This information was cross-referenced with the `usa_zipcode_of_mi-1539j.csv` dataset to obtain the city name and county name for use in the Leaflet map popup details.
+## Instructions
+To run the project locally, follow these steps:
+1. Use the cleaned data file to import it into MongoDB.
+2. Command line: `mongoimport --db detroit_insurance --collection health_ins --file "static/data/Health.geojson" --jsonArray`
+3. Run the Flask app using the `mongo.py` script.
+4. Navigate your browser to [http://127.0.0.1:5000](http://127.0.0.1:5000).
+Alternatively, you can explore the live version of the project [here](https://azbennett.github.io/group_project_3/live/).
+## Technical Requirements
+- Data components are documented.
+- The dataset contains 177 unique records.
+- MongoDB is used to house the data.
+- The project is powered by a Python Flask API, HTML/CSS, JavaScript, and Chart.js library.
+- The project conforms to the design of a dashboard page with multiple charts referencing the same data.
+## Group Presentation
+The group presentation covers all aspects of the project, with each member contributing their part. The content is relevant, engaging, and flows smoothly within time restrictions.
+For more details, please visit the live application and explore the interactive visualizations.
