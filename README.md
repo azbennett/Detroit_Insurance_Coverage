@@ -24,7 +24,6 @@ We need to detail each file used in the readme as well.
 
 
 
-
 Technical Requirements for Project 3
 
 Data and Delivery (25 points)
