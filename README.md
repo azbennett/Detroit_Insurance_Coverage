@@ -1,12 +1,26 @@
 # group_project_3
 Group Project #3
 
+Required data clean up:
 Source File: HealthInsuranceCoverage.geojson
 jq --compact-output ".features" HealthInsuranceCoverage.geojson > Health.geojson
 Output File: Health.geojson
+
 This allows it to be imported into MongoDB
 
+Command line:
 mongoimport --db detroit_insurance --collection health_ins --file "static/data/Health.geojson" --jsonArray
+
+Then run the mongo.py to initate the flask local web environment.
+
+
+We need to explain our data source.
+
+We need to explain our story of what we're using the data for.
+
+We need to detail each file used in the readme as well.
+
+
 
 
 
