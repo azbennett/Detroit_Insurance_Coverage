@@ -10,7 +10,7 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 }).addTo(myMap);
 
 //grab the CSV to import the City and County names
-d3.csv("https://azbennett.github.io/group_project_3/static/data/usa_zipcode_of_mi-1539j.csv").then(function(csvData) {
+d3.csv("/static/data/usa_zipcode_of_mi-1539j.csv").then(function(csvData) {
   //store the csv
   let zipcodeData = csvData;
   
