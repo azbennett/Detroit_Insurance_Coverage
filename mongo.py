@@ -1,4 +1,5 @@
-from flask import Flask, jsonify, render_template
+import os
+from flask import Flask, jsonify, render_template, send_from_directory
 from pymongo import MongoClient
 
 app = Flask(__name__)
@@ -19,5 +20,10 @@ def get_data():
 def index():
     return render_template('index.html')
 
+# https://flask.palletsprojects.com/en/2.3.x/patterns/favicon/
+@app.route('/favicon.ico')
+def favicon():
+    return send_from_directory(os.path.join(app.root_path, 'static'),
+                               'favicon.ico', mimetype='image/vnd.microsoft.icon')
 if __name__ == '__main__':
     app.run(debug=True)
