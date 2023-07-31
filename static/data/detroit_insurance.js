@@ -1,4 +1,4 @@
-// Creating the map object
+// Creating the map object centered around Detroit, MI
 let myMap = L.map("map", {
   center: [42.4974671, -83.2031706],
   zoom: 10
@@ -9,7 +9,7 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
   attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
 }).addTo(myMap);
 
-//grab the CSV to import the City and County names
+//grab the CSV to import the City and County names to use for our GeoID10 vs Zip values later
 d3.csv("https://azbennett.github.io/group_project_3/live/static/data/usa_zipcode_of_mi-1539j.csv").then(function(csvData) {
   //store the csv
   let zipcodeData = csvData;
@@ -49,7 +49,7 @@ function createLegend() {
   legend.addTo(myMap);
 }
 
-//grabs our data with d3.json and processes it
+//grabs our data from our MongoDB Web Flask with d3.json and processes it
 function fetchDataAndProcess(zipcodeData) {
   d3.json('/api/data').then(function(geojsonData) {
     
@@ -85,7 +85,7 @@ function fetchDataAndProcess(zipcodeData) {
           let geoid10 = feature.properties.GEOID10;
           //console.log("Grabbing geoid10: ", geoid10);
           
-          let zipCode = geoid10.substring(2); // Extract the last 5 digits
+          let zipCode = geoid10.substring(2); // Extract the last 5 digits 
           //console.log("Grabbing zipcode last 5 from geoid10: ", zipCode);
           
           let matchingZip = zipcodeData.find(function(zip) {
@@ -93,7 +93,8 @@ function fetchDataAndProcess(zipcodeData) {
           });
           
           //console.log("What did the zip find?: ", matchingZip);
-  
+
+          //boolean check if the geoid10 'zipcode' is matching something in our CSV  zipcodeData
           if (matchingZip) {
             let popupContent = `<b>
               City: ${matchingZip["City"]}<br>
@@ -112,3 +113,13 @@ function fetchDataAndProcess(zipcodeData) {
   }
 
   createLegend();
+
+  /* City: ${matchingZip["City"]}<br>
+  County: ${matchingZip["County Name"]}<br>
+  Total Civilian Population: ${feature.properties.TotalCivilianPop}<br>
+  With Health Insurance: ${feature.properties.WithHealthInsurance}<br>
+  No Health Insurance: ${feature.properties.NoHealthInsurance}<br>
+  Percentage Insured: ${feature.properties.Pct_Insured}<br>
+  With Insurance Under 18: ${feature.properties.WithInsurance_U18}<br>
+  No Insurance Under 18: ${feature.properties.NoInsurance_U18}<br>
+  Percentage Insured Under 18: ${feature.properties.Pct_Insured_U18} */

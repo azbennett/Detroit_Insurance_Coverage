@@ -1,4 +1,4 @@
-// Creating the map object
+// Creating the map object centered around Detroit, MI
 let myMap = L.map("map", {
   center: [42.4974671, -83.2031706],
   zoom: 10
@@ -12,18 +12,18 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 //location of our geojson
 let url = "https://data.ferndalemi.gov/datasets/D3::healthinsurancecoverage-1.geojson?outSR=%7B%22latestWkid%22%3A2898%2C%22wkid%22%3A2898%7D";
 
-//grab the CSV
+//grab the CSV to import the City and County names to use for our GeoID10 vs Zip values later
 d3.csv("https://azbennett.github.io/group_project_3/live/static/data/usa_zipcode_of_mi-1539j.csv").then(function(csvData) {
   //store the csv
   let zipcodeData = csvData;
   
-  console.log("zip code data import:");
-  console.log(zipcodeData);
+  //console.log("zip code data import:");
+  //console.log(zipcodeData);
   
   fetchDataAndProcess(zipcodeData);
 });
 
-
+//inserts our legend with opacity scale + text
 function createLegend() {
   const legend = L.control({ position: 'bottomright' });
 
@@ -53,12 +53,12 @@ function createLegend() {
   legend.addTo(myMap);
 }
 
-
+//grabs our data with d3.json and processes it
 function fetchDataAndProcess(zipcodeData) {
   d3.json(url).then(function(geojsonData) {
     
-    console.log("Geojson import: ");
-    console.log(geojsonData);
+    //console.log("Geojson import: ");
+    //console.log(geojsonData);
     
     function opacitypct(data){ 
      if (data > .95)
@@ -98,6 +98,7 @@ function fetchDataAndProcess(zipcodeData) {
           
           //console.log("What did the zip find?: ", matchingZip);
   
+          //boolean check if the geoid10 'zipcode' is matching something in our CSV  zipcodeData
           if (matchingZip) {
             let popupContent = `<b>
               City: ${matchingZip["City"]}<br>
