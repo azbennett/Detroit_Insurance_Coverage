@@ -35,3 +35,10 @@ Alternatively, you can explore the live version of the project [https://azbennet
 ## Group Presentation
 The group presentation covers all aspects of the project, with each member contributing their part. The content is relevant, engaging, and flows smoothly within time restrictions.
 For more details, please visit the live application and explore the interactive visualizations.
+## URL Sources
+- https://catalog.data.gov/dataset/healthinsurancecoverage-d3b6c/resource/edab6e3a-1f64-4e3f-bacd-d8cd97b19362?inner_span=True
+- https://jqlang.github.io/jq/
+- https://www.downloadexcelfiles.com/us_en/download-list-us-zip-codes-michigan-state#gsc.tab=0
+- https://www.chartjs.org/docs/latest/samples/information.html
+- https://favicon.io/emoji-favicons/ambulance
+- https://flask.palletsprojects.com/en/2.3.x/patterns/favicon/
