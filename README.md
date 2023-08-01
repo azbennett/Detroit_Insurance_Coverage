@@ -16,8 +16,7 @@ The data was processed using the following steps:
 - To get the City and County names from a GeoID10, the first 2 characters were dropped to result in a zip code. This information was cross-referenced with the `usa_zipcode_of_mi-1539j.csv` dataset to obtain the city name and county name for use in the Leaflet map popup details.
 ## Instructions
 To run the project locally, follow these steps:
-1. Use the cleaned data file (Health.geojson) to import it into MongoDB. (jq --compact-output ".features" HealthInsuranceCoverage.geojson > Health.geojson
-)
+1. Use the cleaned data file (Health.geojson) to import it into MongoDB. `jq --compact-output ".features" HealthInsuranceCoverage.geojson > Health.geojson`
 2. Command line: `mongoimport --db detroit_insurance --collection health_ins --file "static/data/Health.geojson" --jsonArray`
 3. Run the Flask app using the `mongo.py` script.
 4. Navigate your browser to [http://127.0.0.1:5000](http://127.0.0.1:5000).
