@@ -10,7 +10,7 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 }).addTo(myMap);
 
 //grab the CSV to import the City and County names to use for our GeoID10 vs Zip values later
-d3.csv("https://azbennett.github.io/group_project_3/live/static/data/usa_zipcode_of_mi-1539j.csv").then(function(csvData) {
+d3.csv("https://azbennett.github.io/Detroit_Insurance_Coverage/live/static/data/usa_zipcode_of_mi-1539j.csv").then(function(csvData) {
   //store the csv
   let zipcodeData = csvData;
   
