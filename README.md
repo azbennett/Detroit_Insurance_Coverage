@@ -3,7 +3,7 @@
 ## Data Source
 - Source File: `HealthInsuranceCoverage.geojson`
 - Clean Data File: `Health.geojson`
-- Website: [Live Version](https://azbennett.github.io/group_project_3/live/)
+- Website: [Live Version](https://azbennett.github.io/Detroit_Insurance_Coverage/live/)
 - The data is available in GeoJSON format, which was cleaned up using the `jq` command-line tool and then imported into MongoDB using `mongoimport` command. The dataset contains 177 unique records and is stored in the `detroit_insurance` database under the collection `health_ins`.
 
 ## Project Overview
@@ -26,7 +26,7 @@ To run the project locally, follow these steps:
 2. Command line: `mongoimport --db detroit_insurance --collection health_ins --file "static/data/Health.geojson" --jsonArray`
 3. Run the Flask app using the `mongo.py` script.
 4. Navigate your browser to [http://127.0.0.1:5000](http://127.0.0.1:5000).
-5. Alternatively, you can explore the live version of the project [https://azbennett.github.io/group_project_3/live/](https://azbennett.github.io/group_project_3/live/).
+5. Alternatively, you can explore the live version of the project [https://azbennett.github.io/Detroit_Insurance_Coverage/live/](https://azbennett.github.io/Detroit_Insurance_Coverage/live/).
 
 ## Why two versions? 
 - You will notice I have the main mongoDB / Flask version running in the root folder. 
